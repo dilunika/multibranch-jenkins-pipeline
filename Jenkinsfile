@@ -27,6 +27,7 @@ pipeline {
                         def env = deriveEnvironmentFromBranchName(BRANCH_NAME)
                         echo "Deploy environment ${env}"
 
+                        sh "npm install"
                         sh "npm run deploy -- -c envPrefix=${env}"
                     }
 
