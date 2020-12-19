@@ -10,22 +10,33 @@ pipeline {
     stages {
 
         stage('Build') {
-            echo "Build stage"
-            echo "Branch name is ${BRANCH_NAME}"
-            script {
-                sh 'cdk --version'
+
+            steps{
+
+                echo "Build stage"
+                echo "Branch name is ${BRANCH_NAME}"
+                script {
+                    sh 'cdk --version'
+                }
             }
         }
 
         stage('Deploy') {
-            echo "Deploy stage"
-            dir('iac') {
-                sh 'ls -l'
+
+            steps {
+
+                echo "Deploy stage"
+                dir('iac') {
+                    sh 'ls -l'
+                }
             }
         }
 
         stage('Deploy') {
-            echo "Test stage"
+
+            steps {
+                echo "Test stage"
+            }
         }
     }
 }
