@@ -21,7 +21,7 @@ export class WebSiteStack extends Stack {
     });
 
     new BucketDeployment(this, `jens-mb-site-${props.envPrefix}-deployment`, {
-      sources: [Source.asset("../../website")],
+      sources: [Source.asset("../website")],
       destinationBucket: websiteBucket
     });
   }
