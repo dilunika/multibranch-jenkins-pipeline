@@ -23,6 +23,8 @@ pipeline {
                 echo "Deploy stage"
                 dir('iac') {
                     sh 'ls -l'
+                    def env = deriveEnvironmentFromBranchName(BRANCH_NAME)
+                    echo "Deploy environment ${env}"
                 }
             }
         }
@@ -33,5 +35,19 @@ pipeline {
                 echo "Test stage"
             }
         }
+    }
+}
+
+def deriveEnvironmentFromBranchName(String branch) {
+
+    if(branch.startsWith('sandbox')) {
+
+        def details = branch.split('/')[1]
+        def env = details.split('-')[0]
+
+        return env
+
+    } else {
+        return 'dev'
     }
 }
