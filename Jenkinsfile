@@ -1,11 +1,6 @@
 pipeline {
 
     agent any
-    options {
-        ansiColor('xterm')
-        timestamps()
-        parallelsAlwaysFailFast()
-    }
 
     stages {
 
@@ -32,7 +27,7 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+        stage('Test') {
 
             steps {
                 echo "Test stage"
