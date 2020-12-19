@@ -22,9 +22,12 @@ pipeline {
 
                 echo "Deploy stage"
                 dir('iac') {
-                    sh 'ls -l'
-                    def env = deriveEnvironmentFromBranchName(BRANCH_NAME)
-                    echo "Deploy environment ${env}"
+                    script {
+                        sh 'ls -l'
+                        def env = deriveEnvironmentFromBranchName(BRANCH_NAME)
+                        echo "Deploy environment ${env}"
+                    }
+
                 }
             }
         }
